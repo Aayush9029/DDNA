@@ -9,8 +9,15 @@ A O   o | A O   o | | O   o G
 o       O o       O o       O
 ```
 
+### Installation:
+```sh
+pip install ddna
+```
+
+
 ### Usage:
 
+- *program*
 ```
 python3 ddna.py -h    
 usage: ddna.py [-h] [-e ENCODE] [-d DECODE]
@@ -25,14 +32,14 @@ optional arguments:
                         Decode DNA to String
 ```
 
-
-### Example:
-**Hello World!** : *CAGACGCCCGTACGTACGTTAGAACCCTCGTTCTAGCGTACGCAAGAC*
-
-**DNA** : *CACACATGCAAC*
-
-**CGGACGTTCGTCCGCCATACATAGATAT** : *home123*
-
+- *pip package*
+```
+>>> from ddna import DDNA
+>>> DDNA().encode("HELLO WORLD")
+'CAGACACCCATACATACATTAGAACCCTCATTCCAGCATACACA'
+>>> DDNA().decode("CAGACACCCATACATACATTAGAACCCTCATTCCAGCATACACA")
+'HELLO WORLD'
+```
 
 ### Plans:
 - [ ] Introduce Mutations
