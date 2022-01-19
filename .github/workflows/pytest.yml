@@ -31,4 +31,4 @@ jobs:
         pip install pytest pylint
     - name:  Run pytests
       run: |
-        pytest test.py
+        pytest
