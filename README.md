@@ -1,6 +1,7 @@
 # DDNA
 Program / Library that converts sentences to DNA sequence and vice-versa.
 
+[![Pylint](https://github.com/Aayush9029/DDNA/actions/workflows/pylint.yml/badge.svg)](https://github.com/Aayush9029/DDNA/actions/workflows/pylint.yml)
 ```js
 O       o O       o O       o
 A O   o | A O   o | | O   o G
