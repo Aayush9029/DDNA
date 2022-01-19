@@ -1,12 +1,5 @@
 name: pytest
-
 on:
-  push:
-    branches: [ main ]
-    paths-ignore:
-    - '**/*.md'
-    - '**/*.txt'
-    - '**/*.yml'
   pull_request:
     branches: [ main ]
     paths-ignore:
