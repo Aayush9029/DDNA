@@ -8,7 +8,7 @@ requirements = []
 
 setup(
     name="ddna",
-    version="0.1.0",
+    version="0.1.1",
     author="Aayush Pokharel",
     author_email="aayushpokharel36@gmail.com",
     description="Encode and decode strings to DNA",
