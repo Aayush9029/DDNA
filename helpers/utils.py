@@ -1,10 +1,12 @@
-# Utility file containg helper functions
+"""Utility file containg helper functions"""
+import argparse
+
 
 def convert_to_string(bits):
     """
     Converts bits to string
     Parametes:
-        Binary bits 1's and 0's        
+        Binary bits 1's and 0's
     Returns:
         String (sentences, words)
     """
@@ -16,12 +18,13 @@ def convert_to_string(bits):
         string += char
     return string
 
+
 def convert_to_bits(string):
     """
     Converts string to bits
     Parameters:
         String (sentences, words)
-    
+
     Returns:
         Binary bits 1's and 0's
     """
@@ -36,6 +39,7 @@ def convert_to_bits(string):
         char_bin = char_bin.zfill(8)
         bits += char_bin
     return bits
+
 
 def banner():
     """ Prints banner """
@@ -52,3 +56,17 @@ o       O o       O o       O
                aayushp.com.np
 """
     print(banner_string)
+
+
+def arguments():
+    """
+    Parses arguments from terminal
+    """
+    parser = argparse.ArgumentParser(
+        description="DDNA - DNA Encoder/Decoder")
+    parser.add_argument(
+        "-e", "--encode", help="Encode String to DNA", type=str)
+    parser.add_argument(
+        "-d", "--decode", help="Decode DNA to String", type=str)
+    args = parser.parse_args()
+    return args
