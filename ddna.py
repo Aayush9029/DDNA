@@ -8,7 +8,7 @@ from helpers.utils import banner, convert_to_bits, convert_to_string, arguments
 class DDNA:
     """
     Main class that runs the program, it's a bit messy but it works
-
+   
     Works both as a standalone program and as a module
     ie: import DDNA  [in python file]
     or DDNA --help [in terminal]
