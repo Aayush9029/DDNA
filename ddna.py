@@ -1,8 +1,18 @@
 # Program that encodes and decodes string to DNA sequence
 # It's like base64 but for DNA and worse :D
+import argparse
+
+from helpers.utils import banner, convert_to_bits, convert_to_string
 
 
 class DDNA:
+    """
+    Main class that runs the program, it's a bit messy but it works
+    Works both as a standalone program and as a module
+    ie: import DDNA  [in python file]
+    or DDNA --help [in terminal]
+    """
+
     def __init__(self):
         self.bases = {
             "00": "A",
@@ -17,88 +27,64 @@ class DDNA:
             "T": "11"
         }
 
-    def convert_to_string(self, bits):
-        """
-        Converts bits to string
-        Parametes:
-            Binary bits 1's and 0's        
-        Returns:
-            String (sentences, words)
-        """
-        string = ""
-        for i in range(0, len(bits), 8):
-            char_bin = bits[i:i+8]
-            char_int = int(char_bin, 2)
-            char = chr(char_int)
-            string += char
-        return string
-
-    def convert_to_bits(self, string):
-        """
-        Converts string to bits
-        Parameters:
-            String (sentences, words)
-        
-        Returns:
-            Binary bits 1's and 0's
-        """
-
-        bits = ""
-        for char in string:
-            # convert char to int
-            char_int = ord(char)
-            # convert int to binary
-            char_bin = bin(char_int)[2:]
-            # add 0's to binary to make it 8 bits
-            char_bin = char_bin.zfill(8)
-            bits += char_bin
-        return bits
-
-    
     def encode(self, string):
         """"
         Encodes String to DNA bases
         Parameters:
             String (sentences, words)
-        
+
         Returns:
             DNA sequence ACTG ATAT...
         """
 
-        bits = self.convert_to_bits(string)
+        bits = convert_to_bits(string)
 
         encoded_bits = ""
         for i in range(0, len(bits), 2):
             encoded_bits += self.bases[bits[i:i+2]]
         return encoded_bits
-    
+
     def decode(self, string):
         """"
         Decodes DNA bases to String
         Parameters:
             DNA sequence ACTG ATAT...
-        
+
         Returns:
             String (sentences, words)
         """
         bits = ""
         for char in string:
             bits += self.bases_rev[char]
-        
-        return self.convert_to_string(bits)
+
+        return convert_to_string(bits)
+
+    def arguments(self):
+        """
+        Parses arguments from terminal
+        """
+        parser = argparse.ArgumentParser(
+            description="DDNA - DNA Encoder/Decoder")
+        parser.add_argument(
+            "-e", "--encode", help="Encode String to DNA", type=str)
+        parser.add_argument(
+            "-d", "--decode", help="Decode DNA to String", type=str)
+        args = parser.parse_args()
+        return args
+
+    def main(self):
+        args = self.arguments()
+        if args.encode:
+            print(self.encode(args.encode))
+        elif args.decode:
+            print(self.decode(args.decode))
+        else:
+            banner()
+            print("Usage:")
+            print("\tddna -e <string>")
+            print("\tddna -d <string>")
+            print("\tddna --help")
 
 
-
-
-
-
-encoded = DDNA().encode("A Quick Brown Fox")
-print(encoded)
-
-decoded = DDNA().decode(encoded)
-print(decoded)
-
-        
-    
-
-
+if __name__ == "__main__":
+    DDNA().main()
