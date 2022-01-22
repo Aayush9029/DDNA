@@ -20,7 +20,7 @@ pip install ddna
 
 - *program*
 ```
-python3 ddna.py -h    
+ python3 -m ddna -h    
 usage: ddna.py [-h] [-e ENCODE] [-d DECODE]
 
 DDNA - DNA Encoder/Decoder
