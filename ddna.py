@@ -10,7 +10,6 @@ from helpers.utils import arguments, banner, convert_to_bits, convert_to_string
 class DDNA:
     """
     Main class that runs the program, it's a bit messy but it works
-   
     Works both as a standalone program and as a module
     ie: import DDNA  [in python file]
     or DDNA --help [in terminal]
@@ -29,6 +28,8 @@ class DDNA:
             "G": "10",
             "T": "11"
         }
+
+    # pylint: disable=no-self-use
     def check_validity(self, string):
         """
         Check if string is a valid dna sequence using regex
