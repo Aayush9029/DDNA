@@ -2,8 +2,10 @@
 Program that encodes and decodes string to DNA sequence
 It's like base64 but for DNA and worse :D
 """
+import re
 
-from helpers.utils import banner, convert_to_bits, convert_to_string, arguments
+from helpers.utils import arguments, banner, convert_to_bits, convert_to_string
+
 
 class DDNA:
     """
@@ -27,6 +29,11 @@ class DDNA:
             "G": "10",
             "T": "11"
         }
+    def check_validity(self, string):
+        """
+        Check if string is a valid dna sequence using regex
+        """
+        return re.match("^[ACGT]*$", string)
 
     def encode(self, string):
         """"
@@ -54,6 +61,9 @@ class DDNA:
         Returns:
             String (sentences, words)
         """
+        if not self.check_validity(string):
+            raise ValueError("Invalid DNA sequence")
+
         bits = ""
         for char in string:
             bits += self.bases_rev[char]
